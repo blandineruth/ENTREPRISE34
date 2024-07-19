@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Woody - Carpenter Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>00225, Aidjan, côte d'ivoire </small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Lundi - Lundi : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+225 07 11 26 56 63 </small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <!-- <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a> -->
+                    <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary">NUMARTIS</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="" class="nav-item nav-link active">Accueil</a>
+                <a href="" class="nav-item nav-link">A Propos de Nous</a>
+                <a href="" class="nav-item nav-link">Services</a>
+                <a href="" class="nav-item nav-link">Contacts</a>
+            </div>
+            
+                <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" 
+                style="background-color: #1B75BC; color: #ffffff;">Je suis un PRO<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 pb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8 text-center">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">BIENVENU SUR NUMARTIS-CI</h5>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">Trouver votre artisan de confiance </h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Notre priorité :  que vos travaux se passent vite et Bien. <br> Et ça marche :  97% de client satisfaits!
+
+                                </p>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En Savoir plus</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Devis Gratuit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8 text-center">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">BIENVENU SUR NUMARTIS-CI</h5>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">Trouver votre artisan de confiance </h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Notre priorité :  que vos travaux se passent vite et Bien. <br> Et ça marche :  97% de client satisfaits!
+
+                                </p>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En Savoir plus</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Devis Gratuit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/carousel-3.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8 text-center">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">BIENVENU SUR NUMARTIS-CI</h5>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">Trouver votre artisan de confiance </h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Notre priorité :  que vos travaux se passent vite et Bien. <br> Et ça marche :  97% de client satisfaits!
+
+                                </p>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En Savoir plus</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Devis Gratuit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                            <i class="fa fa-user-check fa-2x" style="color: #009540;"></i>
+                        </div>
+                        <h1 class="display-1 text-light mb-0">01</h1>
+                    </div>
+                    <h5>Creative Designers</h5>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                            <i class="fa fa-check fa-2x" style="color: #009540;"></i>
+                        </div>
+                        <h1 class="display-1 text-light mb-0">02</h1>
+                    </div>
+                    <h5>Qualité d'artisan</h5>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                            <i class="fa fa-drafting-compass fa-2x" style="color: #009540;"></i>
+                        </div>
+                        <h1 class="display-1 text-light mb-0">03</h1>
+                    </div>
+                    <h5>Consultation Gratuit</h5>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
+                            <i class="fa fa-headphones fa-2x" style="color: #009540;"></i>
+                        </div>
+                        <h1 class="display-1 text-light mb-0">04</h1>
+                    </div>
+                    <h5>satisfaction client</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature Start -->
+
+
+
+    <!-- About Start -->
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container about px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/about.jpg" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 pe-lg-0">
+                        <div class="section-title text-start">
+                            <h1 class="display-5 mb-4" style="color: #009540">A propos de nous </h1>
+                        </div>
+                        <p class="mb-4 pb-2" style="color: #000000;">Bienvenue chez NUMARTIS-CI, votre partenaire de confiance pour la
+                            promotion des métiers artisanaux en Côte d'Ivoire. Nous sommes
+                            dédiés à la valorisation et au soutien des artisans talentueux qui
+                            perpétuent des savoir-faire traditionnels tout en innovant pour
+                            répondre aux besoins modernes.</p>
+                        <div class="row g-4 mb-4 pb-2">
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-users" style="color: #009540;"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h2 class="mb-1" data-toggle="counter-up" style="color: #1B75BC;">100</h2>
+                                        <p class="fw-medium mb-0" style="color: #000000;">Clients satisfaits </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-check" style="color: #009540;"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h2 class="mb-1" data-toggle="counter-up" style="color: #1B75BC;">90</h2>
+                                        <p class="fw-medium mb-0"style="color: #000000;">Projet réalisés </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-primary py-3 px-5">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5" style="color: #009540;">SERVICES </h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/service-1.jpg" alt="">
+                        </div>
+                        <div class="p-4 text-center border border-5 border-light border-top-0">
+                            <h4 class="mb-3">Nettoyage à  domicile
+                                Votre Partenaire de Confiance 24h/24</h4>
+                            <p>Le nettoyage à domicile, nous offrons un service de haute qualité et professionnel. Disponible 24h/24,
+                                notre équipe dédiée est là pour répondre à tous vos besoins de nettoyage et d'entretien..</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">En savoir plus</a>
+                            <a class="fw-medium" href="">En savoir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/service-2.jpg" alt="">
+                        </div>
+                        <div class="p-4 text-center border border-5 border-light border-top-0">
+                            <h4 class="mb-3">Mécanique Expert 24h/24</h4>
+                            <p>Avec plus de 10 ans d'expérience en mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement...</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
+                            <a class="fw-medium" href="">En savoir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/service-3.jpg" alt="">
+                        </div>
+                        <div class="p-4 text-center border border-5 border-light border-top-0">
+                            <h4 class="mb-3">Artisan Menuisier : Expertise et Disponibilité 24h/24</h4>
+                            <p>notre équipe dédiée est là pour répondre à tous vos besoins en matière de menuiserie et d'aménagement.</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
+                            <a class="fw-medium" href="">En savoir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/service-4.jpg" alt="">
+                        </div>
+                        <div class="p-4 text-center border border-5 border-light border-top-0">
+                            <h4 class="mb-3">Service de Peinture Professionnel</h4>
+                            <p>Que ce soit pour rafraîchir votre intérieur ou transformer votre espace extérieur, notre équipe
+                                de peintres qualifiés est là pour répondre à tous vos besoins.</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
+                            <a class="fw-medium" href="">En savoir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/service-5.jpg" alt="">
+                        </div>
+                        <div class="p-4 text-center border border-5 border-light border-top-0">
+                            <h4 class="mb-3">ELECTRICIEN votre Partenaire de Confiance 24h/24</h4>
+                            <p>Avec plus de 10 ans d'expérience en   mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement.</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
+                            <a class="fw-medium" href="">En savoir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="img/service-6.jpg" alt="">
+                        </div>
+                        <div class="p-4 text-center border border-5 border-light border-top-0">
+                            <h4 class="mb-3">PLOMBIER Expert 24h/24</h4>
+                            <p>Avec plus de 10 ans d'expérience en   mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement.</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
+                            <a class="fw-medium" href="">En savoir plus<i class="fa fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <div class="section-title text-start">
+                            <h1 class="display-5 mb-4">Pourquoi Nous choisis</h1>
+                        </div>
+                        <p class="mb-4 pb-2" style="color: black;">Fondée par une équipe passionnée de jeunes talents,
+                            NUMARTIS-CI s'efforce de transformer le  secteur
+                            artisanal en Côte d'Ivoire. Notre vision est de devenir
+                            un leader incontesté dans  l'intégration des artisans
+                            dans l'économie formelle en utilisant des
+                            technologies de pointe pour  faciliter leur mise en
+                            relation avec les clients.</p>
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-check" style="color: #009540;"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-2" style="color: black;">Qualité</p>
+                                        <h5 class="mb-0" style="color: black;">Services</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-user-check" style="color: #009540;"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-2" style="color: black" > Creative </p>
+                                        <h5 class="mb-0" style="color: black" >Designers</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-drafting-compass"style="color: #009540;"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-2" style="color: black">Gratuit</p>
+                                        <h5 class="mb-0"style="color: black" >Consultation</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                                        <i class="fa fa-headphones" style="color: #009540;" ></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="mb-2" style="color: black">Client</p>
+                                        <h5 class="mb-0" style="color: black">Support</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/feature.jpg" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+    
+    <!-- Projects Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5" style="color: #009540;">COMMENT CELA FONCTIONNE T-IL ?</h1>
+            </div>
+            <div class="row g-4 portfolio-container">
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="img/recherche (1).png" alt="Image 1" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">CHOISISSEZ VOTRE ARTISAN</p>
+                            <h5 class="lh-base mb-0">Selon prix, avis, réactivité et proximité</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="img/calendrier.png" alt="Image 2" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">RÉSERVEZ</p>
+                            <h5 class="lh-base mb-0">En ligne votre artisan. Votre rendez-vous garanti.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item third wow fadeInUp">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="img/bien.png" alt="Image 3" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">VOS TRAVAUX SONT NICKEL</p>
+                            <h5 class="lh-base mb-0">C'est vous qui validez le versement à votre artisan.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5" style="color: #009540;">C'EST QUOI LE PACK CONFIANCE NUMARTIS-CI.com ?</h1>
+            </div>
+    
+            <div class="row g-4 portfolio-container">
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="img/confiance.png" alt="Image 1" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">LE PRIX FIXE, CONNU À L'AVANCE</p>
+                            <h5 class="lh-base mb-0">Pack travaux tout compris</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="img/cotravail.png" alt="Image 2" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">RÉSERVEZ</p>
+                            <h5 class="lh-base mb-0">L'ÉQUIPE ULTRA-RÉACTIVE</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item third wow fadeInUp">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="img/mode-de-paiement.png" alt="Image 3" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">LE PAIEMENT VERSÉ APRÈS TRAVAUX</p>
+                            <h5 class="lh-base mb-0">C'est vous qui validez le paiement au pro à la fin des travaux.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Projects End -->
+
+
+    <!-- Quote Start -->
+    <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+        <div class="container quote px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="img/quote.jpg" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 pe-lg-0">
+                        <div class="section-title text-start">
+                            <h1 class="display-5 mb-4">Devis gratuit</h1>
+                        </div>
+                        <p class="mb-4 pb-2" style="color: black;">Notre vision est de devenir
+                            un leader incontesté dans  l'intégration des artisans
+                            dans l'économie formelle en utilisant des
+                            technologies de pointe pour  faciliter leur mise en
+                            relation avec les clients.</p>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Votre nom" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control border-0" placeholder="votre Email" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Télephone" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select class="form-select border-0" style="height: 55px;">
+                                        <option selected>Selectionner un service</option>
+                                        <option value="1">Mécanique</option>
+                                        <option value="2">Peintre</option>
+                                        <option value="3">PLOMBIER</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control border-0" placeholder="Special Note"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Envoyer</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quote End -->
+
+
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Cocody II plateaux</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+225 07 11 26 56 63</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>nurmartis-ci@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Services</h4>
+                    <a class="btn btn-link" href="">MECANIQUE EXPERT</a>
+                    <a class="btn btn-link" href="">ELECTRICIEN</a>
+                    <a class="btn btn-link" href="">PLOMBIER</a>
+                    <a class="btn btn-link" href="">MENUSIER</a>
+                    <a class="btn btn-link" href="">PEINTRE</a>
+                    <a class="btn btn-link" href="">Tous les metiers du secteurs informels</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Our Services</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Newsletter</h4>
+                    <p>S’inscrire à la newsletter.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">NUMARTIS-CI</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer 
+                            author’s credit link/attribution link/backlink, 
+                            you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        <a class="border-bottom" href=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
