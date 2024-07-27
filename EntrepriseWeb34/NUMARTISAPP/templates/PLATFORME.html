@@ -1,0 +1,65 @@
+{% extends "base1.html" %} 
+
+{% load static %}
+
+{% block content %}
+ 
+ <!-- FORMULAIRE Start -->
+ <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <main class="p-4">
+        <h1 class="text-center text-xl font-bold mb-4">INSCRIPTION SUR LA PLATEFORME NUMARTIS-CI</h1>
+        <p class="text-center bg-green-500 text-white py-4 rounded mb-4" style="background-color: #009540;">Vous allez créer votre compte professionnel ! 
+        L'inscription est gratuite et se fait en 3 minutes environ.</p>
+      </main>  
+</div>
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <form class="bg-light p-4 rounded shadow-sm">
+          <h2 class="h5 mb-4">INFORMATION SUR L’ENTREPRISE</h2>
+          <div class="form-group">
+            <input type="text" class="form-control mb-3" placeholder="Nom Commercial" required>
+            <input type="text" class="form-control mb-3" placeholder="Structure juridique"  required>
+            <input type="email" class="form-control mb-3" placeholder="Adresse Mail"  required>
+            <input type="text" class="form-control mb-3" placeholder="Secteur d'activité"  required>
+            <input type="tel" class="form-control mb-3" placeholder="Numéro de téléphone"  required>
+            <input type="text" class="form-control mb-3" placeholder="Adresse de l'entreprise"  required>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form class="bg-light p-4 rounded shadow-sm">
+          <h2 class="h5 mb-4">INFORMATION SUR LE CONTACT</h2>
+          <div class="form-group">
+            <input type="text" class="form-control mb-3" placeholder="Nom et Prénom"  required>
+            <input type="email" class="form-control mb-3" placeholder="Adresse Mail"  required>
+            <input type="tel" class="form-control mb-3" placeholder="Numéro de téléphone"  required>
+            <input type="text" class="form-control mb-3" placeholder="Adresse"  required>
+            <input type="text" class="form-control mb-3" placeholder="Années d'expérience"  required>
+            <input type="text" class="form-control mb-3" placeholder="Fonction dans l'entreprise"  required>
+            <input type="text" class="form-control mb-3" placeholder="Horaires de travail" required >
+            <input type="file" class="form-control-file mb-3" placeholder="enregistrer une photo" required>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary">Valider</button>
+    </div>
+  </div>
+<!-- Quote End -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+   
+
+   

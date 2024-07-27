@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #AB7442;
-    --light: #F5F5F5;
+    --primary: #009540 !important;
+    --light: #FFFF;
     --dark: #353535;
 }
 
@@ -49,6 +49,8 @@
 
 .btn.btn-primary,
 .btn.btn-secondary {
+    background-color: #009540;
+    border-color: #009540;
     color: #FFFFFF;
 }
 
@@ -77,6 +79,7 @@
     font-weight: normal;
 }
 
+
 /*** Navbar ***/
 .navbar .dropdown-toggle::after {
     border: none;
@@ -90,7 +93,7 @@
 .navbar-light .navbar-nav .nav-link {
     margin-right: 30px;
     padding: 25px 0;
-    color: #FFFFFF;
+    color: #009540;
     font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
@@ -109,7 +112,7 @@
     }
 
     .navbar-light .navbar-nav {
-        border-top: 1px solid #EEEEEE;
+        border-top: 1px solid #009540;
     }
 }
 
@@ -145,6 +148,15 @@
         transition: .5s;
         opacity: 1;
     }
+    .container-fluid {
+     background-color: #009540;
+     color: #FFFFFF;
+    }
+    .btn.btn-primary.py-4.px-lg-5.d-none.d-lg-block {
+        background-color: #FFFFFF;
+        color:#009540;
+    }
+   
 }
 
 
@@ -562,8 +574,9 @@
 
 /*** Footer ***/
 .footer {
-    background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url(../img/footer.jpg) center center no-repeat;
+    background: linear-gradient(#009540), url(../img/footer.jpg) center center no-repeat;
     background-size: cover;
+    background-color: #009540;
 }
 
 .footer .btn.btn-social {
@@ -620,4 +633,9 @@
 
 .footer .copyright a:hover {
     color: var(--primary);
+}
+
+.form-floating .placeholder {
+color: black !important;
+
 }
