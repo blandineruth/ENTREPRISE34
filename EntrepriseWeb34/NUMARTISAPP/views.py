@@ -129,6 +129,8 @@ def EntrepriseArtisan(request):
         form = EntrepriseArtisanForm()
     return render(request, 'EntrepriseArtisan.html', {'form': form})
 
+
+
 def user_login_view(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
