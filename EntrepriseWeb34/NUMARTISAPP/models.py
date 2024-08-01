@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 
@@ -37,28 +37,21 @@ class About(models.Model):
 class Icon(models.Model):
     name = models.CharField(max_length=255)
     css_class = models.CharField(max_length=255)
+    
 
-class Service(models.Model):
+class ServiceFirst(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     image = models.ImageField(upload_to='services/')
     link = models.URLField(blank=True, null=True)
+    PageLink = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
     
-class Service(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to='service_images/')
-    link = models.URLField(max_length=200, blank=True, null=True)
-
-    def __str__(self):
-        return self.name
-
-
+    
 class Project(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -72,7 +65,6 @@ class Project(models.Model):
 class Quote(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    form_fields = models.JSONField()  # Store form fields as JSON
     image = models.ImageField(upload_to='quote_images/')
 
     def __str__(self):
@@ -84,7 +76,6 @@ class Footer(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     social_links = models.JSONField()  # Store social media links as JSON
-    services = models.ManyToManyField(Service, related_name='footers')
     quick_links = models.JSONField()  # Store quick links as JSON
 
     def __str__(self):
@@ -98,17 +89,16 @@ class NewsletterSubscription(models.Model):
         return self.email
 
 
-
-class QuoteRequest(models.Model):
+class devis(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    special_note = models.TextField()
+    typeservice = models.CharField(max_length=100)
+    message = models.TextField()
 
     def __str__(self):
         return f"Quote Request from {self.name}"
-
+    
 
 class FooterInfo(models.Model):
     address = models.CharField(max_length=255)
@@ -151,19 +141,11 @@ class Contact(models.Model):
     address = models.TextField()
     years_of_experience = models.CharField(max_length=100)
     job_title = models.CharField(max_length=255)
-    working_hours = models.CharField(max_length=100)
+    working_hours = models.DateTimeField(max_length=100)
     id_photo = models.ImageField(upload_to='id_photos/')
 
     def __str__(self):
         return f"{self.full_name} - {self.company.name}"
-
-
-
-
-# class ServiceForm(forms.ModelForm):
-#     class Meta:
-#         model = Service
-#         fields = ['name', 'description', 'icon', 'link']
 
 
 class UserLogin(models.Model):
@@ -173,6 +155,48 @@ class UserLogin(models.Model):
     def __str__(self):
         return self.email
 
+
+class inscription(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last}"
+    
+      
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(email, password, **extra_fields)
+
+
+class CustomUser(AbstractBaseUser):
+    email = models.EmailField(unique=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def __str__(self):
+        return self.email
+    
 
 class ServiceRequest(models.Model):
     STATUS_CHOICES = [
@@ -286,8 +310,6 @@ class ContactMessage(models.Model):
         return f"{self.name} - {self.subject}"
     
 
-
-
 class DemandeService3(models.Model):
     question1 = models.CharField(max_length=100)
     question2 = models.CharField(max_length=100)
@@ -299,6 +321,7 @@ class DemandeService3(models.Model):
     budjet = models.CharField(max_length=100)
     disponibilite = models.CharField(max_length=10, choices=[('oui', 'Oui'), ('non', 'Non')], default='oui')
     contact_preference = models.CharField(max_length=10, choices=[('telephone', 'Téléphone'), ('email', 'Email')], default='email')
+    
     def __str__(self):
         return f"{self.address}, {self.ville}, {self.email}, {self.numero}"
     
@@ -333,10 +356,41 @@ class DemandeService1(models.Model):
     ville = models.CharField(max_length=100, choices=ville_CHOICES, blank=False, null=True)
     email = models.EmailField(blank=False, null=True)
     tel = models.CharField(max_length=20, blank=False, null=True)
-    budget= models.DecimalField(decimal_places=2, max_digits=20000000, blank=False, null=True)
-    indisponibilite=models.BooleanField(default=True, null=False,blank=False)
+    budget = models.DecimalField(decimal_places=2, max_digits=20000000, blank=False, null=True)
+    indisponibilite = models.BooleanField(default=True, null=False,blank=False)
 
     def __str__(self):
-        return f" {self.name}, {self.demande}, {self.delai},{self.heure}, {self.address}, {self.ville}, {self.email}, {self.tel}"
-     
+        return f"{self.name}, {self.demande}, {self.delai}, {self.heure}, {self.address}, {self.ville}, {self.email}, {self.tel}"
+
+
+class DemandeService3(models.Model):
+    question1 = models.CharField(max_length=100)
+    question2 = models.CharField(max_length=100)
+    question3 = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    email = models.EmailField()
+
+
+class EntrepriseArtisan(models.Model):
+    # Champs pour les informations sur l'entreprise
+    nom_commercial = models.CharField(max_length=255)
+    structure_juridique = models.CharField(max_length=255, blank=True)
+    adresse_mail_entreprise = models.EmailField()
+    secteur_activite = models.CharField(max_length=255)
+    numero_telephone_entreprise = models.CharField(max_length=20)
+    adresse_entreprise = models.CharField(max_length=255)
+
+    # Champs pour les informations sur l'artisan
+    nom_prenom_artisan = models.CharField(max_length=255)
+    adresse_mail_artisan = models.EmailField()
+    numero_telephone_artisan = models.CharField(max_length=20)
+    adresse_artisan = models.CharField(max_length=255)
+    annees_experience = models.CharField(max_length=255)
+    fonction_dans_entreprise = models.CharField(max_length=255)
+    horaires_travail = models.CharField(max_length=255)
+    photo_artisan = models.ImageField(upload_to='photos/')
     
+    def __str__(self):
+        return f'{self.nom_commercial} - {self.nom_prenom_artisan}'
+
+

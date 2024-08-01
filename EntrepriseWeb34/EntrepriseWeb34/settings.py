@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'NUMARTISAPP',
+  
 ]
 
 MIDDLEWARE = [
@@ -78,9 +79,10 @@ WSGI_APPLICATION = 'EntrepriseWeb34.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': BASE_DIR / 'bd.numartis.sqlite3',
+        }
 }
+
 
 
 # Password validation

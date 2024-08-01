@@ -159,7 +159,7 @@
                 {% csrf_token %}
                 <div class="flex justify-between mt-6">
                     <button type="submit" class="bg-green-custom text-white py-2 px-4 rounded-lg">Valider</button>
-                   <a href=""><button type="button" class="bg-red-600 text-white py-2 px-4 rounded-lg">Annuler</button></a>
+                   <a href="{% url 'index' %}"><button type="button" class="bg-red-600 text-white py-2 px-4 rounded-lg">Annuler</button></a>
                 </div>
             </form>
         </div>

@@ -1,0 +1,130 @@
+{% extends "base1.html" %} 
+
+{% load static %}
+
+{% block content %}
+ 
+ <!-- FORMULAIRE Start -->
+ <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <main class="p-4">
+        <h1 class="text-center text-xl font-bold mb-4">INSCRIPTION SUR LA PLATEFORME NUMARTIS-CI</h1>
+        <p class="text-center bg-green-500 text-white py-4 rounded mb-4" style="background-color: #009540;">Vous allez créer votre compte professionnel ! 
+        L'inscription est gratuite et se fait en 3 minutes environ.</p>
+      </main>  
+</div>
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <form id="entrepriseArtisanForm" action="{% url 'EntrepriseArtisan' %}" method="post" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
+          {% csrf_token %}
+          <h2 class="h5 mb-4">INFORMATION SUR L’ENTREPRISE</h2>
+          <div class="form-group">
+              <input type="text" class="form-control mb-3" placeholder="Nom Commercial" required name="nom_commercial">
+              <input type="text" class="form-control mb-3" placeholder="Structure juridique" name="structure_juridique">
+              <input type="email" class="form-control mb-3" placeholder="Adresse Mail" required name="adresse_mail_entreprise">
+              <input type="text" class="form-control mb-3" placeholder="Secteur d'activité" required name="secteur_activite">
+              <input type="tel" class="form-control mb-3" placeholder="Numéro de téléphone" required name="numero_telephone_entreprise">
+              <input type="text" class="form-control mb-3" placeholder="Adresse de l'entreprise" required name="adresse_entreprise">
+          </div>
+          <h2 class="h5 mb-4">INFORMATION SUR L'ARTISAN</h2>
+          <div class="form-group">
+              <input type="text" class="form-control mb-3" placeholder="Nom et Prénom" required name="nom_prenom_artisan">
+              <input type="email" class="form-control mb-3" placeholder="Adresse Mail" required name="adresse_mail_artisan">
+              <input type="tel" class="form-control mb-3" placeholder="Numéro de téléphone" required name="numero_telephone_artisan">
+              <input type="text" class="form-control mb-3" placeholder="Adresse" required name="adresse_artisan">
+              <input type="text" class="form-control mb-3" placeholder="Années d'expérience" required name="annees_experience">
+              <input type="text" class="form-control mb-3" placeholder="Fonction dans l'entreprise" required name="fonction_dans_entreprise">
+              <input type="text" class="form-control mb-3" placeholder="Horaires de travail" required name="horaires_travail">
+              <div>
+                  <p>Enregistrer une photo</p>
+                  <input type="file" class="form-control-file mb-3" placeholder="enregistrer une photo" required name="photo_artisan">
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Soumettre</button>
+      </form>
+      </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Merci de vous être inscrit sur la plateforme NUMARTIS. Voulez-vous continuer ?
+            </div>
+            <div class="modal-footer">
+                <a href="/commande1/" class="btn btn-primary">Oui</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Retourner au formulaire</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de remerciement -->
+<div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="thanksModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="thanksModalLabel">Merci</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Merci de vous être inscrit sur la plateforme NUMARTIS.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<script>
+$(document).ready(function() {
+    $('#entrepriseArtisanForm').on('submit', function(e) {
+        e.preventDefault(); // Empêche le rechargement de la page
+        
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    $('#thanksModal').modal('show'); // Affiche le modal de remerciement
+                    $('#thanksModal').on('hidden.bs.modal', function () {
+                        $('#confirmationModal').modal('show'); // Affiche le modal de confirmation après le modal de remerciement
+                    });
+                } else {
+                    alert('Il y a des erreurs dans le formulaire.');
+                }
+            }
+        });
+    });
+});
+</script>
+<!-- Quote End -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+   
+
+   
