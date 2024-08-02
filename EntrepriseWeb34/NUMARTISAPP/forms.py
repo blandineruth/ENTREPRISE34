@@ -5,7 +5,7 @@ from .models import devis
 from .models import UserLogin
 from django.contrib.auth.models import User
 from .models import CustomUser
-
+from .models import ContactUser
 
 class DemandeServiceForm(forms.ModelForm):
     class Meta:
@@ -96,3 +96,9 @@ class RegistrationForm(forms.ModelForm):
             self.add_error('password_confirm', 'Les mots de passe ne correspondent pas')
 
         return cleaned_data
+    
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactUser
+        fields = ['name', 'email', 'phone_number', 'typeservice', 'message']

@@ -11,7 +11,8 @@ from .forms import RegistrationForm
 from django.contrib.auth import authenticate, login as auth_login
 from .forms import RegistrationForm
 from .models import CustomUser
-
+from .forms import ContactForm
+from .models import ServiceFirst
 
 
 # Create your views here.
@@ -175,3 +176,25 @@ def registration_view(request):
         form = RegistrationForm()
 
     return render(request, 'CustomUser.html', {'form': form})
+
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contact')  # Rediriger vers une page de succès ou afficher un message de succès
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+
+
+def services_view(request):
+    service_type = request.GET.get('service_type', '')
+    if service_type:
+        services = ServiceFirst.objects.filter(service_type__icontains=service_type)
+    else:
+        services = ServiceFirst.objects.all()
+
+    return render(request, 'services.html', {'services': services})

@@ -1,194 +1,52 @@
-
-{% extends "base1.html" %} 
+{% extends "base1.html" %}
 
 {% load static %}
 
 {% block content %}
     <!-- Service Start -->
+    <div class="container">
+        <div class="d-flex justify-content-end mb-3">
+            <form method="get" action="{% url 'services' %}" class="d-flex align-items-center">
+                <div class="me-3">
+                    <select class="form-select" name="service_type">
+                        <option value="">Tous les services</option>
+                        <option value="mecanique">Mécanique</option>
+                        <option value="electricite">Électricité</option>
+                        <option value="plomberie">Plomberie</option>
+                        <option value="peinture">Peinture</option>
+                        <option value="carrelage">Carrelage</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="divers">Divers</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </div>
+
     <div class="container-xxl py-5">
         <div class="container">
             <div class="section-title text-center">
-                <h1 class="display-5 mb-5" style="color: #009540;"> Les SERVICES de NUMARTIS-CI</h1>
+                <h1 class="display-5 mb-5" style="color: #009540;">Les SERVICES de NUMARTIS-CI</h1>
             </div>
             <div class="row g-4">
+                {% for service in services %}
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF2.jpg' %}" alt="">
+                            <img class="img-fluid" src="{{ service.image.url }}" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Nettoyage à  domicile
-                                Votre Partenaire de Confiance 24h/24</h4>
-                            <p>Le nettoyage à domicile, nous offrons un service de haute qualité et professionnel. Disponible 24h/24,
-                                notre équipe dédiée est là pour répondre à tous vos besoins de nettoyage et d'entretien..</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
+                            <h4 class="mb-3">{{ service.name }}</h4>
+                            <p>{{ service.description }}</p>
+                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px;">Obtenir un devis</a>
                             <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF4.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Mécanique Expert 24h/24</h4>
-                            <p>Avec plus de 10 ans d'expérience en mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement...</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan <i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF1.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Artisan Menuisier : Expertise et Disponibilité 24h/24</h4>
-                            <p>notre équipe dédiée est là pour répondre à tous vos besoins en matière de menuiserie et d'aménagement.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/PEINTRECONTACT.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Service de Peinture Professionnel</h4>
-                            <p>Que ce soit pour rafraîchir votre intérieur ou transformer votre espace extérieur, notre équipe
-                                de peintres qualifiés est là pour répondre à tous vos besoins.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF7.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">ELECTRICIEN(E) votre Partenaire de Confiance 24h/24</h4>
-                            <p>Avec plus de 10 ans d'expérience en   mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF8.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">PLOMBIER Expert 24h/24</h4>
-                            <p>Avec plus de 10 ans d'expérience en   mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF2.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Nettoyage à  domicile
-                                Votre Partenaire de Confiance 24h/24</h4>
-                            <p>Le nettoyage à domicile, nous offrons un service de haute qualité et professionnel. Disponible 24h/24,
-                                notre équipe dédiée est là pour répondre à tous vos besoins de nettoyage et d'entretien..</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href=""  style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF4.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Mécanique Expert 24h/24</h4>
-                            <p>Avec plus de 10 ans d'expérience en mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement...</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF1.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Artisan Menuisier : Expertise et Disponibilité 24h/24</h4>
-                            <p>notre équipe dédiée est là pour répondre à tous vos besoins en matière de menuiserie et d'aménagement.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/PEINTRECONTACT.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">Service de Peinture Professionnel</h4>
-                            <p>Que ce soit pour rafraîchir votre intérieur ou transformer votre espace extérieur, notre équipe
-                                de peintres qualifiés est là pour répondre à tous vos besoins.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;" > Porfil Artisan <i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF7.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">ELECTRICIEN votre Partenaire de Confiance 24h/24</h4>
-                            <p>Avec plus de 10 ans d'expérience en   mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;" > Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="{% static 'img/TOF8.jpg' %}" alt="">
-                        </div>
-                        <div class="p-4 text-center border border-5 border-light border-top-0">
-                            <h4 class="mb-3">PLOMBIER Expert 24h/24</h4>
-                            <p>Avec plus de 10 ans d'expérience en   mécanique, nous offrons un service professionnel et de qualité. Disponible 24h/24, notre équipe est là pour vous satisfaire pleinement.</p>
-                            <a href="" class="btn btn-primary py-2 px-5" style="border-radius:50px; float: left; margin-right: 30px; ">Obtenir un devis</a>
-                            <a class="fw-medium" href="" style="color: #1B75BC;">Profil Artisan<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
     <!-- Service End -->
-
 {% endblock %}
-
-
-
-
-
-
-
-
-
-    

@@ -3,10 +3,12 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 
-class ContactInfo(models.Model):
-    address = models.CharField(max_length=255)
-    working_hours = models.CharField(max_length=255)
+class ContactUser(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=20)
+    typeservice = models.CharField(max_length=100)
+    message = models.TextField()
     
 
 class Carousel(models.Model):
@@ -37,21 +39,28 @@ class About(models.Model):
 class Icon(models.Model):
     name = models.CharField(max_length=255)
     css_class = models.CharField(max_length=255)
+   
     
-
 class ServiceFirst(models.Model):
-    title = models.CharField(max_length=200)
+    SERVICE_TYPES = [
+        ('mecanique', 'Mécanique'),
+        ('electricite', 'Électricité'),
+        ('plomberie', 'Plomberie'),
+        ('peinture', 'Peinture'),
+        ('carrelage', 'Carrelage'),
+        ('maintenance', 'Maintenance'),
+        ('divers', 'Divers'),
+    ]
+
+    name = models.CharField(max_length=100)
     description = models.TextField()
+    service_type = models.CharField(max_length=50, choices=SERVICE_TYPES)
     image = models.ImageField(upload_to='services/')
-    link = models.URLField(blank=True, null=True)
-    PageLink = models.URLField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
-    
-    
+        return self.name
+
+
 class Project(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()

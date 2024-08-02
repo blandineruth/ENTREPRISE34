@@ -27,52 +27,44 @@
                             Get a functional and working contact form with Ajax & 
                             PHP in a few minutes. Just copy and paste the files,
                              add a little code and you're done</a>.</p>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                        <label for="name" style="color: black;">Votre Nom</label>
+                             <form method="post" action="{% url 'contact' %}">
+                                {% csrf_token %}
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            {{ form.name }}
+                                            <label for="{{ form.name.id_for_label }}" style="color: black;">Votre Nom</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                        <label for="email" style="color: black;">Votre Email</label>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            {{ form.email }}
+                                            <label for="{{ form.email.id_for_label }}" style="color: black;">Votre Email</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject" style="color: black;">Numéro</label>
-                                    </div>
-                                    <br>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <select class="border p-4 rounded border-green-600" style="width: 400px;">
-                                                <option>Service</option>
-                                                <option value="mecanicien">Mécanicien</option>
-                                                <option value="electricite">Électricité</option>
-                                                <option value="plomberie">Plomberie</option>
-                                                <option value="peinture">Peinture</option>
-                                                <option value="carrelage">Carrelage</option>
-                                                <option value="maintenance">Maintenance</option>
-                                                <option value="divers">Divers</option>
-                                            </select>
+                                            {{ form.phone_number }}
+                                            <label for="{{ form.phone_number.id_for_label }}" style="color: black;">Numéro</label>
                                         </div>
-                                </div>
-                                <br>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                        <label for="message" style="color: black;">Message</label>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            {{ form.typeservice }}
+                                            <label for="{{ form.typeservice.id_for_label }}" style="color: black;">Service</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            {{ form.message }}
+                                            <label for="{{ form.message.id_for_label }}" style="color: black;">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Message Envoyer</button>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Message Envoyer</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>                            
                     </div>
                 </div>
               >
