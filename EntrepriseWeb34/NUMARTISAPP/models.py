@@ -441,8 +441,9 @@ class Profil(models.Model):
 
 class SubscriptionPack(models.Model):
     PACK_CHOICES = [
-        ('free', 'Pack 1: Abonnement Free'),
-        ('premium', 'Pack 2: Abonnement Premium'),
+        ('Forfait de Base', 'Pack 1: Abonnement de Base'),
+        ('Forfait Avancé', 'Pack 2: Abonnement Avancé'),
+        ('Forfait Premium', 'Pack 3: Abonnement Premium'),
     ]
     name = models.CharField(max_length=100, choices=PACK_CHOICES)
     description = models.TextField()
