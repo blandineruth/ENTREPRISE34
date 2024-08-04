@@ -12,21 +12,46 @@ from django.contrib.auth import authenticate, login as auth_login
 from .forms import RegistrationForm
 from .models import CustomUser
 from .forms import ContactForm
-from .models import ServiceFirst
+from django.shortcuts import render, get_object_or_404
+from .models import Servicetype, Profil
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView
+from .models import SubscriptionPack
 
 
 # Create your views here.
+
+def subscription_packs_view(request):
+    packs = SubscriptionPack.objects.all()
+    return render(request, 'subscription_packs.html', {'packs': packs})
+
 
 def index(request):
     return render(request, 'index.html')
 
 
-def services(request):
-    return render(request, 'Services.html')
+def profil_view(request):
+    profiles = Profil.objects.all()  # Si vous avez plusieurs profils ou ajustez selon vos besoins
+    return render(request, 'profil.html', {'profiles': profiles})
 
-
-def contact(request):
-    return render(request, 'contact.html')
+   
+def newsletter_signup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        # Envoyer un e-mail de confirmation
+        send_mail(
+            'Confirmation d\'inscription à notre Newsletter',
+            'Merci de vous être inscrit à notre newsletter ! Nous vous tiendrons informé des dernières nouvelles.',
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            fail_silently=False,
+        )
+        messages.success(request, 'Inscription réussie ! Vous allez recevoir un e-mail de confirmation.')
+        return redirect('home')  # Redirige vers la page d'accueil ou une autre page
+    return render(request, 'newsletter_signup.html')
 
 
 def devis(request):
@@ -131,7 +156,6 @@ def EntrepriseArtisan(request):
     return render(request, 'EntrepriseArtisan.html', {'form': form})
 
 
-
 def user_login_view(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
@@ -189,12 +213,11 @@ def contact_view(request):
     return render(request, 'contact.html', {'form': form})
 
 
-
 def services_view(request):
     service_type = request.GET.get('service_type', '')
     if service_type:
-        services = ServiceFirst.objects.filter(service_type__icontains=service_type)
+        services = Servicetype.objects.filter(service_type__icontains=service_type)
     else:
-        services = ServiceFirst.objects.all()
+        services = Servicetype.objects.all()
 
     return render(request, 'services.html', {'services': services})

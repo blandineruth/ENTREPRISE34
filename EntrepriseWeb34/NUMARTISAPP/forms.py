@@ -30,11 +30,11 @@ class QuoteRequestForm(forms.ModelForm):
             }),
             'phone': forms.TextInput(attrs={
                 'class': 'form-control border-0', 
-                'placeholder': 'Télephone', 
+                'placeholder': 'Téléphone', 
                 'style': 'height: 55px;'
             }),
-            'typeservice': forms.TextInput(attrs={
-                'class': 'form-control border-0', 
+            'typeservice': forms.Select(attrs={
+                'class': 'form-control border-0',
                 'style': 'height: 55px;'
             }),
             'message': forms.Textarea(attrs={
@@ -42,6 +42,18 @@ class QuoteRequestForm(forms.ModelForm):
                 'placeholder': 'Special Note'
             })
         }
+        
+    TYPE_SERVICE_CHOICES = [
+        ('nettoyage', 'Nettoyage à domicile'),
+        ('mecanique', 'Mécanique'),
+        ('menuiserie', 'Menuiserie'),
+        # Ajoutez d'autres options ici
+    ]
+
+    typeservice = forms.ChoiceField(choices=TYPE_SERVICE_CHOICES, widget=forms.Select(attrs={
+        'class': 'form-control border-0',
+        'style': 'height: 55px;'
+    }))
 
 
 class EntrepriseArtisanForm(forms.ModelForm):

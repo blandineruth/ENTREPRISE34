@@ -72,7 +72,7 @@
                 <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                 <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a> -->
-                <a href="{% url 'connexion' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="{% url 'User_login' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </div>
     </div>
@@ -94,7 +94,7 @@
         <a href="{% url 'services' %}" class="nav-item nav-link">Services</a>
         <a href="{% url 'contact' %}" class="nav-item nav-link">Contacts</a>
     </div>
-            <a href="{% url 'PLATFORME' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" 
+            <a href="{% url 'EntrepriseArtisan' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" 
             style="background-color: #1B75BC; color: #ffffff;">Je suis un PRO<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
 </nav>
@@ -196,8 +196,8 @@
                     <a class="btn btn-link" href="#Apropos">A Propos de nous</a>
                     <a class="btn btn-link" href="{% url 'contact' %}">Contact</a>
                     <a class="btn btn-link" href="{% url 'services' %}">Services</a>
-                    <a class="btn btn-link" href="{% url 'connexion' %}">connexion</a>
-                    <a class="btn btn-link" href="{% url 'inscription' %}">inscription</a>
+                    <a class="btn btn-link" href="{% url 'User_login' %}">connexion</a>
+                    <a class="btn btn-link" href="{% url 'CustomUser' %}">inscription</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Newsletter</h4>

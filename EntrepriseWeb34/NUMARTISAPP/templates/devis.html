@@ -83,7 +83,7 @@
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a> -->
-                    <a href="{% url 'connexion' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="{% url 'User_login' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
             <a href="{% url 'services' %}" class="nav-item nav-link">Services</a>
             <a href="{% url 'contact' %}" class="nav-item nav-link">Contacts</a>
         </div>
-                <a href="{% url 'PLATFORME' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" 
+                <a href="{% url 'EntrepriseArtisan' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" 
                 style="background-color: #1B75BC; color: #ffffff;">Je suis un Artisan<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
@@ -115,40 +115,75 @@
   <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
     <div class="container quote px-lg-0">
         <div class="row g-0 mx-lg-0">
-            <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/carpenter-cutting-mdf-board-inside-workshop_23-2149451041.jpg' %}" style="object-fit: cover;" alt="">
+            <div class="col-lg-6 ps-lg-0" style="min-height: 200px;">
+                <div class="position-relative h-90">
+                    <img class="position-absolute img-fluid w-90 h-90" 
+                         src="{% static 'img/carpenter-cutting-mdf-board-inside-workshop_23-2149451041.jpg' %}" 
+                         style="object-fit: cover;" alt="">
                 </div>
             </div>
             <div class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
                 <div class="p-lg-5 pe-lg-0">
                     <div class="section-title text-start">
-                        <h1 class="display-5 mb-4">Devis gratuit</h1>
+                        <h1 class="display-5 mb-4">Demandez Votre Devis Personnalisé</h1>
                     </div>
-                    <p class="mb-4 pb-2" style="color: black;">Notre vision est de devenir
-                        un leader incontesté dans  l'intégration des artisans
-                        dans l'économie formelle en utilisant des
-                        technologies de pointe pour  faciliter leur mise en
-                        relation avec les clients.</p>
-                    <form  id="devisForm" method="post" action="{% url 'devis' %}">
-                              {% csrf_token %}
+                    <p class="mb-4 pb-2" style="color: black;">Chez NUMARTIS-CI, nous comprenons que chaque artisan et chaque projet sont uniques. C'est
+                        pourquoi nous offrons des devis personnalisés pour répondre spécifiquement à vos besoins. Que
+                        vous soyez un artisan cherchant à exposer vos produits sur notre plateforme, à améliorer votre
+                        visibilité en ligne ou à participer à nos formations, nous sommes là pour vous accompagner à
+                        chaque étape.</p>
+                    <form id="devisForm" method="post" action="{% url 'devis' %}" class="needs-validation" novalidate>
+                        {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
-                                {{ form.name }}
+                                <div class="form-group">
+                                    <label for="id_name" class="form-label">Nom</label>
+                                    {{ form.name }}
+                                    <div class="invalid-feedback">
+                                        Veuillez entrer votre nom.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                {{ form.email }}
+                                <div class="form-group">
+                                    <label for="id_email" class="form-label">Email</label>
+                                    {{ form.email }}
+                                    <div class="invalid-feedback">
+                                        Veuillez entrer une adresse email valide.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                {{ form.phone }}
+                                <div class="form-group">
+                                    <label for="id_phone" class="form-label">Téléphone</label>
+                                    {{ form.phone }}
+                                    <div class="invalid-feedback">
+                                        Veuillez entrer votre numéro de téléphone.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                {{ form.typeservice}}
+                                <div class="form-group">
+                                    <label for="id_typeservice" class="form-label">Type de Service</label>
+                                    {{ form.typeservice }}
+                                    <div class="invalid-feedback">
+                                        Veuillez sélectionner un type de service.
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-12">
-                                {{ form.message }}
+                                <div class="form-group">
+                                    <label for="id_message" class="form-label">Message</label>
+                                    {{ form.message }}
+                                    <div class="invalid-feedback" style="height: 70px;">
+                                        Veuillez entrer votre message.
+                                    </div>
+                                </div>
                             </div>
-                         <button type="submit" class="btn btn-primary">Envoyer</button>
+                            <div class="col-12" >
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                            </div>
+                        </div>
                     </form>
                     <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -160,17 +195,15 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" style="color: black;">
-                                    Merci de vous être inscrit. Voulez vous suivre ?
+                                    Merci de vous être inscrit. Voulez-vous suivre ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" id="continueButton">Oui</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Retourner au formulaire</button>
+                                    <a href="{% url 'devis' %}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Retourner au formulaire</button></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
                     <script>
                         $(document).ready(function() {
                             $('#devisForm').on('submit', function(e) {
@@ -200,6 +233,7 @@
         </div>
     </div>
 </div>
+
 <!-- Quote End -->
 
 
@@ -233,8 +267,8 @@
                     <a class="btn btn-link" href="#Apropos">A Propos de nous</a>
                     <a class="btn btn-link" href="{% url 'contact' %}">Contact</a>
                     <a class="btn btn-link" href="{% url 'services' %}">Services</a>
-                    <a class="btn btn-link" href="{% url 'connexion' %}">connexion</a>
-                    <a class="btn btn-link" href="{% url 'inscription' %}">inscription</a>
+                    <a class="btn btn-link" href="{% url 'User_login' %}">connexion</a>
+                    <a class="btn btn-link" href="{% url 'CustomUser' %}">inscription</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Newsletter</h4>

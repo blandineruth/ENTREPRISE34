@@ -122,7 +122,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Configurations pour l'envoi d'e-mails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'  # Remplacez par le serveur SMTP de votre choix
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ayiteruth004@gmail.com'  # Remplacez par votre adresse e-mail
+EMAIL_HOST_PASSWORD = 'your-email-password'  # Remplacez par votre mot de passe
+DEFAULT_FROM_EMAIL = 'your-email@example.com'

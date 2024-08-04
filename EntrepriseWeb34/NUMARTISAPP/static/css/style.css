@@ -24,6 +24,10 @@
     bottom: 45px;
     z-index: 99;
 }
+.reduced-size {
+    max-width: 50%; /* Ajustez la largeur en pourcentage ou en pixels selon vos besoins */
+    height: auto;
+}
 
 
 /*** Spinner ***/

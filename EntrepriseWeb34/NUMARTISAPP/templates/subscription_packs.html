@@ -1,0 +1,27 @@
+{% extends "base1.html" %}
+
+{% block content %}
+    <section class="bg-white py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5" style="color: #009540;">Nos Packs d’Abonnement</h1>
+            </div>
+            <div class="row g-4">
+                {% for pack in packs %}
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="subscription-pack p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">{{ pack.name }}</h4>
+                        <p>{{ pack.description }}</p>
+                        {% if pack.price %}
+                            <h5 class="mb-3">Prix: {{ pack.price }} FCFA</h5>
+                        {% else %}
+                            <h5 class="mb-3">Prix: Gratuit</h5>
+                        {% endif %}
+                        <a href="#" class="btn btn-primary py-2 px-5" style="border-radius:50px;">S'abonner</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

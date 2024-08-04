@@ -1,8 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
+from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 
 
+
+class Artisan(models.Model):
+    name = models.CharField(max_length=100)
+    specialty = models.CharField(max_length=100)
+    
 class ContactUser(models.Model):
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
@@ -41,7 +48,7 @@ class Icon(models.Model):
     css_class = models.CharField(max_length=255)
    
     
-class ServiceFirst(models.Model):
+class Servicetype(models.Model):
     SERVICE_TYPES = [
         ('mecanique', 'Mécanique'),
         ('electricite', 'Électricité'),
@@ -99,15 +106,24 @@ class NewsletterSubscription(models.Model):
 
 
 class devis(models.Model):
+    TYPE_SERVICE_CHOICES = [
+        ('nettoyage', 'Nettoyage à domicile'),
+        ('mecanique', 'Mécanique'),
+        ('menuiserie', 'Menuiserie'),
+        # Ajoutez d'autres options ici
+    ]
+    
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    typeservice = models.CharField(max_length=100)
+    typeservice = models.CharField(max_length=50, choices=TYPE_SERVICE_CHOICES)
     message = models.TextField()
 
     def __str__(self):
         return f"Quote Request from {self.name}"
+   
     
+
 
 class FooterInfo(models.Model):
     address = models.CharField(max_length=255)
@@ -403,3 +419,34 @@ class EntrepriseArtisan(models.Model):
         return f'{self.nom_commercial} - {self.nom_prenom_artisan}'
 
 
+class Profil(models.Model):
+    # Champs pour les informations personnelles
+    utilisateur = models.OneToOneField(EntrepriseArtisan, on_delete=models.CASCADE, related_name='profil')
+    photo = models.ImageField(upload_to='photos/', blank=True, null=True)
+    nom_complet = models.CharField(max_length=255)
+    adresse_mail = models.EmailField()
+    numero_telephone = models.CharField(max_length=20)
+    adresse = models.CharField(max_length=255)
+    date_naissance = models.DateField(null=True, blank=True)
+    
+    # Champs pour les informations professionnelles
+    secteur_activite = models.CharField(max_length=255)
+    annees_experience = models.PositiveIntegerField()
+    fonction = models.CharField(max_length=255)
+    horaires_travail = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return f'{self.nom_complet} - {self.fonction}'
+
+
+class SubscriptionPack(models.Model):
+    PACK_CHOICES = [
+        ('free', 'Pack 1: Abonnement Free'),
+        ('premium', 'Pack 2: Abonnement Premium'),
+    ]
+    name = models.CharField(max_length=100, choices=PACK_CHOICES)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Prix peut être null pour les packs gratuits
+
+    def __str__(self):
+        return self.name
