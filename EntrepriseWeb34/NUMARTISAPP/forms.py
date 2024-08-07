@@ -104,14 +104,14 @@ class AuthUser(UserCreationForm):
         label="entrer un email",
         required=True,
         widget=forms.TextInput(attrs={'autocomplete': 'email'}),
-        #help_text="Required. 150 characters or fewer. Lettersand @/./+/-/_ only.",
+       
     )
     
     phone_number = forms.EmailField(
         label="entrer un Numero",
         required=True,
         widget=forms.NumberInput(attrs={'autocomplete': 'phone_number'}),
-        #help_text="Required. 150 characters or fewer. Lettersand @/./+/-/_ only.",
+    
     ) 
     password1 = forms.CharField(
         label="entrer un mot de passe",
@@ -123,10 +123,10 @@ class AuthUser(UserCreationForm):
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}), 
     )
     
-    
-#class meta pour personnaliser les chants du formulaire
+
 class Meta(UserCreationForm.Meta):
         fields=UserCreationForm.Meta.fields +("password1","password2")
+        
 
 def __init__(self, *args, **kwargs):
         super(AuthUser, self).__init__(*args, **kwargs)
