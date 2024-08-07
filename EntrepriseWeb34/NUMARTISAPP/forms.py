@@ -2,10 +2,10 @@ from django import forms
 from .models import DemandeService1
 from .models import EntrepriseArtisan
 from .models import devis
-from .models import UserLogin
 from django.contrib.auth.models import User
-from .models import CustomUser
+from django.shortcuts import render, redirect
 from .models import ContactUser
+from django.contrib.auth.forms import UserCreationForm
 
 class DemandeServiceForm(forms.ModelForm):
     class Meta:
@@ -69,48 +69,72 @@ class EntrepriseArtisanForm(forms.ModelForm):
             'horaires_travail', 'photo_artisan'
 
         ]   
- 
-           
-class UserLoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'form-control border-green-600'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Mot de passe', 'class': 'form-control border-green-600'}))
 
-
-class RegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
-
-    class Meta:
-        model = CustomUser
-        fields = ['first_name', 'last_name', 'email', 'password']
-
-    def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get('password')
-        confirm_password = cleaned_data.get('confirm_password')
-
-        if password != confirm_password:
-            raise forms.ValidationError("Les mots de passe ne correspondent pas")
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Mot de passe'}))
-    password_confirm = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirmer le mot de passe'}))
-    phone_number = forms.CharField(max_length=20, required=False, widget=forms.TextInput(attrs={'placeholder': 'Numéro de téléphone'}))
-    
-    class Meta:
-        model = CustomUser
-        fields = ['first_name', 'last_name', 'email']
-    
-    def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get('password')
-        password_confirm = cleaned_data.get('password_confirm')
-
-        if password != password_confirm:
-            self.add_error('password_confirm', 'Les mots de passe ne correspondent pas')
-
-        return cleaned_data
-    
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactUser
         fields = ['name', 'email', 'phone_number', 'typeservice', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Votre Nom'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Votre Email'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numéro'}),
+            'typeservice': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Service'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message'}),
+        }
+        
+        
+        
+class AuthUser(UserCreationForm):
+    first_name = forms.EmailField(
+        label="entrer un Nom",
+        required=True,
+        widget=forms.TextInput(attrs={'autocomplete': 'first_name'}),
+        #help_text="Required. 150 characters or fewer. Lettersand @/./+/-/_ only.",
+    )
+    
+    last_name = forms.EmailField(
+        label="entrer un Prenom",
+        required=True,
+        widget=forms.TextInput(attrs={'autocomplete': 'last_name'}),
+        #help_text="Required. 150 characters or fewer. Lettersand @/./+/-/_ only.",
+    )
+       
+    email = forms.EmailField(
+        label="entrer un email",
+        required=True,
+        widget=forms.TextInput(attrs={'autocomplete': 'email'}),
+        #help_text="Required. 150 characters or fewer. Lettersand @/./+/-/_ only.",
+    )
+    
+    phone_number = forms.EmailField(
+        label="entrer un Numero",
+        required=True,
+        widget=forms.NumberInput(attrs={'autocomplete': 'phone_number'}),
+        #help_text="Required. 150 characters or fewer. Lettersand @/./+/-/_ only.",
+    ) 
+    password1 = forms.CharField(
+        label="entrer un mot de passe",
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}), 
+    )
+
+    password2 = forms.CharField(
+        label="confirmation de mot de passe",
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}), 
+    )
+    
+    
+#class meta pour personnaliser les chants du formulaire
+class Meta(UserCreationForm.Meta):
+        fields=UserCreationForm.Meta.fields +("password1","password2")
+
+def __init__(self, *args, **kwargs):
+        super(AuthUser, self).__init__(*args, **kwargs)
+        # Ajoutez le placeholder pour chaque champ ici
+        self.fields['first_name'].widget.attrs['placeholder'] = 'Nom d\'utilisateur'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Nom d\'utilisateur'
+        self.fields['email'].widget.attrs['placeholder'] = 'Adresse e-mail'
+        self.fields['phone_number'].widget.attrs['placeholder'] = 'Entrer le numéro'
+        self.fields['email'].widget.attrs['placeholder'] = 'Adresse e-mail'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Mot de passe '
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirmer le mot de passe'

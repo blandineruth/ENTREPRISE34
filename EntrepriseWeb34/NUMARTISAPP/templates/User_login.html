@@ -5,24 +5,25 @@
 {% block content %}
 
 <main class="p-4 p-md-8">
-    <h1 class="text-green-700 text-center text-2xl font-bold mb-4">CONNEXION</h1>
-    <div class="bg-white border border-zinc-300 p-4 p-md-8 mt-4 rounded-lg shadow-md">
-      <h2 class="text-blue-700 text-center text-xl font-semibold mb-4"><strong>J'ai déja un compte</strong></h2>
-      <form class="row" method="post" action="{% url 'User_login' %}">
-        {% csrf_token %}
-        <div class="col-12 col-md-6 mb-3 mb-md-0">
-          {{ form.email }}
-        </div>
-        <div class="col-12 col-md-6">
-          {{ form.password }}
-        </div>
-        <div class="col-12 text-center mt-4">
-            <button type="submit" class="btn btn-custom text-white px-4 py-2 rounded" style="background-color: #009540;">Confirmer</button>
-          </div>
-      </form>
-      <p class="text-center mt-4">Vous n'avez pas un compte ? <a href="{% url 'CustomUser' %}" class="text-blue-700">inscrivez-vous ici</a></p>
+  <h1 class="text-green-700 text-center text-2xl font-bold mb-4">CONNEXION</h1>
+  <div class="bg-white border border-zinc-300 p-4 p-md-8 mt-4 rounded-lg shadow-md">
+    <h2 class="text-blue-700 text-center text-xl font-semibold mb-4"><strong>J'ai déjà un compte</strong></h2>
+   <form class="row" method="post" action="">
+    {% csrf_token %}
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        {{ form.email }}
     </div>
-  </main>
+    <div class="col-12 col-md-6">
+        {{ form.password }}
+    </div>
+    <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-custom text-white px-4 py-2 rounded" style="background-color: #009540;">Confirmer</button>
+    </div>
+</form>
+
+    <p class="text-center mt-4">Vous n'avez pas de compte ? <a href="" class="text-blue-700">Inscrivez-vous ici</a></p>
+  </div>
+</main>
 
 {% endblock %}
 

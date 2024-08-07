@@ -3,26 +3,50 @@ from NUMARTISAPP.models import DemandeService1
 from django.http import JsonResponse
 from .forms import QuoteRequestForm
 from .forms import EntrepriseArtisanForm
-from .forms import UserLoginForm  # Assurez-vous d'importer la classe UserLogin
-from .models import UserLogin
-from django.contrib.auth import login as auth_login
-from django.contrib.auth.models import User
-from .forms import RegistrationForm
-from django.contrib.auth import authenticate, login as auth_login
-from .forms import RegistrationForm
-from .models import CustomUser
 from .forms import ContactForm
 from django.shortcuts import render, get_object_or_404
 from .models import Servicetype, Profil
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView
 from .models import SubscriptionPack
+from django.http import HttpResponse
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from .forms import AuthUser
 
 
-# Create your views here.
+
+def inscription(request):
+    if request.method == 'POST':
+        form = AuthUser(request.POST)
+        if form.is_valid():
+            form.save(commit=False)
+            form.instance.email = form.cleaned_data['email']
+            user = form.save()
+            print(f"Utilisateur créé : nom: {user.username} password :{user.password} email: {user.email}")
+            return redirect('connexion')
+    else:
+        form = AuthUser()
+    return render(request, 'inscription.html', {'form': form})
+
+
+# pour la connexion
+def connexion(request):
+    if request.method == 'POST':
+        email = request.POST["email"]
+        password = request.POST["password"]
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('profile')
+        
+        else:
+            messages.error(request, "nom ou mot de pass incorect")
+    return render(request, 'connexion.html')
+
 
 def subscription_packs_view(request):
     packs = SubscriptionPack.objects.all()
@@ -65,10 +89,6 @@ def devis(request):
     else:
         form = QuoteRequestForm()
     return render(request, 'devis.html', {'form': form})
-
-
-def inscription(request):
-    return render(request, 'inscription.html')
 
 
 def commande1(request):
@@ -156,61 +176,15 @@ def EntrepriseArtisan(request):
     return render(request, 'EntrepriseArtisan.html', {'form': form})
 
 
-def user_login_view(request):
-    if request.method == 'POST':
-        form = UserLoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-
-            # Vérifie que les champs ne sont pas vides
-            if email and password:
-                try:
-                    # Rechercher l'utilisateur par l'email
-                    user = CustomUser.objects.get(email=email)
-                except CustomUser.DoesNotExist:
-                    form.add_error(None, 'Identifiants invalides')
-                    return render(request, 'User_login.html', {'form': form})
-
-                # Authentifier l'utilisateur
-                user = authenticate(request, email=email, password=password)
-                if user is not None:
-                    auth_login(request, user)  # Connecter l'utilisateur
-                    return redirect('index')  # Redirige vers la page d'accueil
-                else:
-                    form.add_error(None, 'Identifiants invalides')
-    else:
-        form = UserLoginForm()
-
-    return render(request, 'User_login.html', {'form': form})
-
-
-def registration_view(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            password = form.cleaned_data.get('password')
-            user.set_password(password)
-            user.save()
-            CustomUser.objects.create(user=user, phone_number=form.cleaned_data.get('phone_number'))
-            auth_login(request, user)
-            return redirect('index')  # Redirige vers la page d'accueil après l'inscription
-    else:
-        form = RegistrationForm()
-
-    return render(request, 'CustomUser.html', {'form': form})
-
-
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contact')  # Rediriger vers une page de succès ou afficher un message de succès
+            return redirect('ContactUser')  # Rediriger vers une page de succès ou afficher un message de succès
     else:
         form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+    return render(request, 'ContactUser.html', {'form': form})
 
 
 def services_view(request):
@@ -221,3 +195,4 @@ def services_view(request):
         services = Servicetype.objects.all()
 
     return render(request, 'services.html', {'services': services})
+

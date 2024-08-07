@@ -85,6 +85,7 @@
 
 
 /*** Navbar ***/
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -93,6 +94,7 @@
     vertical-align: middle;
     margin-left: 8px;
 }
+
 
 .navbar-light .navbar-nav .nav-link {
     margin-right: 30px;
@@ -642,4 +644,160 @@
 .form-floating .placeholder {
 color: black !important;
 
+}
+
+
+@media (min-width: 992px) {
+    .navbar-nav {
+        margin-left: auto;
+    }
+}
+
+/* Styles pour les petits écrans (mobiles et tablettes en portrait) */
+@media (max-width: 991.98px) {
+    #spinner {
+        display: none; /* Cacher le spinner pour les petits écrans si besoin */
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-toggler {
+        margin-right: 0;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+    
+    .topbar .col-lg-7,
+    .topbar .col-lg-5 {
+        padding: 0.5rem; /* Réduire les marges pour les petits écrans */
+    }
+    
+    .topbar .btn-primary {
+        width: 100%; /* Assurer que le bouton occupe toute la largeur */
+    }
+}
+
+/* Styles pour les très petits écrans (mobiles en portrait) */
+@media (max-width: 575.98px) {
+    .topbar .btn-primary {
+        font-size: 0.875rem; /* Réduire la taille du texte si nécessaire */
+        padding: 0.5rem 1rem; /* Réduire le padding pour les petits écrans */
+    }
+}
+
+
+  
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 346.8 77.2% 49.8%;
+--primary-foreground: 355.7 100% 97.3%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 346.8 77.2% 49.8%;
+--radius: 0.5rem;
+    }
+    .dark {
+        --background: 20 14.3% 4.1%;
+--foreground: 0 0% 95%;
+--popover: 0 0% 9%;
+--popover-foreground: 0 0% 95%;
+--card: 24 9.8% 10%;
+--card-foreground: 0 0% 95%;
+--primary: 346.8 77.2% 49.8%;
+--primary-foreground: 355.7 100% 97.3%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 0 0% 15%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 12 6.5% 15.1%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 85.7% 97.3%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 346.8 77.2% 49.8%;
+    }
+}
+.menu-visible {
+    display: block !important;
+  }
+
+
+  @layer base {
+    :root {
+        --background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 346.8 77.2% 49.8%;
+--primary-foreground: 355.7 100% 97.3%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 346.8 77.2% 49.8%;
+--radius: 0.5rem;
+    }
+    .dark {
+        --background: 20 14.3% 4.1%;
+--foreground: 0 0% 95%;
+--popover: 0 0% 9%;
+--popover-foreground: 0 0% 95%;
+--card: 24 9.8% 10%;
+--card-foreground: 0 0% 95%;
+--primary: 346.8 77.2% 49.8%;
+--primary-foreground: 355.7 100% 97.3%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 0 0% 15%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 12 6.5% 15.1%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 85.7% 97.3%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 346.8 77.2% 49.8%;
+    }
+}
+.ttttttttt{
+    border: none;
+}
+
+@media screen and (max-width: 770px) {
+    .span-heure{
+        display: none;
+    }
+    .span-adresse{
+        font-size: 12px;
+    }
+    .span-tel{
+       display: none;
+    }
 }

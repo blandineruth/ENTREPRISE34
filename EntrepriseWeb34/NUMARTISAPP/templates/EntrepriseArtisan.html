@@ -13,7 +13,7 @@
       </main>  
 </div>
 <div class="container mt-4">
-    <div class="row">
+    <div class="row" style="justify-content: center;">
       <div class="col-md-6">
         <form id="entrepriseArtisanForm" action="{% url 'EntrepriseArtisan' %}" method="post" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
           {% csrf_token %}
@@ -34,7 +34,10 @@
               <input type="text" class="form-control mb-3" placeholder="Adresse" required name="adresse_artisan">
               <input type="text" class="form-control mb-3" placeholder="Années d'expérience" required name="annees_experience">
               <input type="text" class="form-control mb-3" placeholder="Fonction dans l'entreprise" required name="fonction_dans_entreprise">
-              <input type="text" class="form-control mb-3" placeholder="Horaires de travail" required name="horaires_travail">
+              <div>
+                <label for="">Enregistrer une date</label>
+                <input type="date" class="form-control mb-3" placeholder="Horaires de travail" required name="horaires_travail">
+              </div>
               <div>
                   <p>Enregistrer une photo</p>
                   <input type="file" class="form-control-file mb-3" placeholder="enregistrer une photo" required name="photo_artisan">
