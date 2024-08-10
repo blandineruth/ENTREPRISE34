@@ -6,16 +6,26 @@
 {% block content %}
 
 <main class="p-4 p-md-8 d-flex align-items-center justify-content-center min-vh-70">
-    <div class="w-100" style="max-width: 650px;">
+    <div class="w-100" style="max-width: 990px;">
         <h1 class="text-success text-center display-4 font-weight-bold mb-4">INSCRIPTION</h1>
         <div class="bg-white border border-secondary p-4 p-md-8 mt-4 rounded-lg shadow">
             <h2 class="text-primary text-center h3 font-weight-bold mb-4"><strong>C’est ma première fois</strong></h2>
+            {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
             <form action="{% url 'inscription' %}" method="post" class="item-form">
                 {% csrf_token %}
-                <H1>inscription</H1>
-                {{ form.as_p }}
-                <button type="submit" style="padding: 10px 20px;background-color: rgb(105, 29, 176);border: none;border: 10px;color: white; border-top-right-radius: 10px;
-                border-bottom-left-radius: 10px;">je m'inscrit</button>
+                    {{ form.as_p }}
+                <div class="text-center">
+                <button type="submit" class="btn btn-primary">je m'inscrit</button>
+            </div>
             </form>
             <p class="text-center mt-4">Vous avez déjà un compte ? <a href="" class="text-primary">Connectez-vous ici</a></p>
         </div>

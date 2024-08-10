@@ -1,0 +1,40 @@
+
+{% extends "base1.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<main class="p-4 p-md-8 d-flex align-items-center justify-content-center min-vh-70">
+    <div class="w-100" style="max-width: 990px;">
+        <h1 class="text-success text-center display-4 font-weight-bold mb-4">MODIFICATION DU PROFIL</h1>
+        <div class="bg-white border border-secondary p-4 p-md-8 mt-4 rounded-lg shadow">
+            {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+            <form action="{% url 'inscription' %}" method="post" class="item-form">
+                {% csrf_token %}
+                    {{ form.as_p }}
+                <div class="text-center">
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </div>
+            </form>
+            <p class="text-center mt-4"><a href="{% url 'index' %}" class="text-primary">Retour a l'accueil</a></p>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+
+
+
+  

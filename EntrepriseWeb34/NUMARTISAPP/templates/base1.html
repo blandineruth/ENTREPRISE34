@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title> <a href="{% url 'index' %}"></a>NUMARTIS-CI</title>
+    <title>NUMARTIS-CI</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -42,6 +42,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <style>
+        input#id_password1,input#id_password2,#id_email,#id_last_name,#id_first_name,#id_username{
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            width: 100%;
+            border: 1px solid #ced4da;
+            height: 60px;
+        }
+        label{
+            display: none;
+        }
+    </style>
     
 </head>
 
@@ -74,12 +90,12 @@
                     <small class="fa fa-phone-alt text-primary me-2"></small>
                     <small>+225 07 11 26 56 63 </small>
                 </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <!-- <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a> -->
-                    <a href="" class="btn btn-primary py-4 px-lg-5 d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                <div class="h-100 d-inline-flex align-items-center justify-content-end">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'deconnexion' %}" class="btn btn-primary py-4 px-lg-4 d-lg-block">DÉCONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                    {% else %}
+                        <a href="{% url 'connexion' %}" class="btn btn-primary py-4 px-lg-5 d-lg-block">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                    {% endif %}
                 </div>
             </div>
         </div>

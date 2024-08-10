@@ -76,15 +76,19 @@ class ContactForm(forms.ModelForm):
         model = ContactUser
         fields = ['name', 'email', 'phone_number', 'typeservice', 'message']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Votre Nom'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Votre Email'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numéro'}),
-            'typeservice': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Service'}),
-            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 
+                                           'placeholder': 'Votre Nom'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control',
+                                             'placeholder': 'Votre Email'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 
+                                                   'placeholder': 'Numéro'}),
+            'typeservice': forms.TextInput(attrs={'class': 'form-control', 
+                                                  'placeholder': 'Service'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 
+                                             'placeholder': 'Message'}),
         }
         
-        
-        
+              
 class AuthUser(UserCreationForm):
     first_name = forms.EmailField(
         label="entrer un Nom",
@@ -138,3 +142,56 @@ def __init__(self, *args, **kwargs):
         self.fields['email'].widget.attrs['placeholder'] = 'Adresse e-mail'
         self.fields['password1'].widget.attrs['placeholder'] = 'Mot de passe '
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirmer le mot de passe'
+
+
+# forms.py
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+
+class AuthUser(UserCreationForm):
+    first_name = forms.CharField(
+        label='Prénom',
+        required=True,
+        widget=forms.TextInput(attrs={'autocomplete': 'first_name', 'placeholder': 'Entrer votre Prénom'}),
+    )
+    last_name = forms.CharField(
+        label='Nom',
+        required=True,
+        widget=forms.TextInput(attrs={'autocomplete': 'last_name', 'placeholder': 'Entrer votre Nom'}),
+    )
+    username = forms.CharField(
+        label='Nom d’utilisateur',
+        required=True,
+        widget=forms.TextInput(attrs={'autocomplete': 'username', 'placeholder': 'Nom d’utilisateur'}),
+    )
+    email = forms.EmailField(
+        label='Adresse e-mail',
+        required=True,
+        widget=forms.EmailInput(attrs={'autocomplete': 'email', 'placeholder': 'Adresse e-mail'}),
+    )
+    password1 = forms.CharField(
+        label='Mot de passe',
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'placeholder': 'Mot de passe'}),
+    )
+    password2 = forms.CharField(
+        label='Confirmer le mot de passe',
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'placeholder': 'Confirmer le mot de passe'}),
+    )
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError('Ce nom d’utilisateur est déjà pris.')
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError('Cet email est déjà utilisé.')
+        return email

@@ -13,40 +13,65 @@ from django.views.generic import DetailView
 from .models import SubscriptionPack
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
 from .forms import AuthUser
 
 
 
 def inscription(request):
-    if request.method == 'POST':
-        form = AuthUser(request.POST)
-        if form.is_valid():
-            form.save(commit=False)
-            form.instance.email = form.cleaned_data['email']
-            user = form.save()
-            print(f"Utilisateur créé : nom: {user.username} password :{user.password} email: {user.email}")
-            return redirect('connexion')
-    else:
-        form = AuthUser()
+    try:
+        if request.method == 'POST':
+            form = AuthUser(request.POST)
+            if form.is_valid():
+                form.save(commit=False)
+                form.instance.email = form.cleaned_data['email']
+                user = form.save()
+                print(f"Utilisateur créé : nom: {user.first_name} password :{user.password} email: {user.email} {user.last_name} username: {user.username}")
+                messages.success(request, "Inscription réussie ! Vous pouvez maintenant vous connecter.")
+                return redirect('connexion')
+            else:
+                messages.error(request, "Veuillez corriger les erreurs ci-dessous.")
+        else:
+            form = AuthUser()
+    except Exception as e:
+        messages.error(request, f"Une erreur est survenue : {e}")
+    
     return render(request, 'inscription.html', {'form': form})
-
-
 # pour la connexion
 def connexion(request):
     if request.method == 'POST':
-        email = request.POST["email"]
+        username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username=email, password=password)
+        user = authenticate(request, username=username, password=password)
+        print(f'{username}, password {password}')
         if user is not None:
             login(request, user)
-            return redirect('profile')
-        
+            messages.success(request, "Bienvenue sur la plate-forme Numartis !")
+            return redirect('index')
         else:
-            messages.error(request, "nom ou mot de pass incorect")
+            messages.error(request, "nom ou mot de passe incorect")
     return render(request, 'connexion.html')
 
+@login_required
+def deconnexion(request):
+    logout(request)
+    return redirect('connexion')
+
+def profil_client(request):
+    return render(request, 'profil_client.html')
+def modification(request):
+    user = request.user  
+    if request.method == 'POST':
+        form = AuthUser(request.POST, instance=user)  
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Votre profil a été mis à jour avec succès.")
+            return redirect('index')  
+    else:
+        form = AuthUser(instance=user)  
+    
+    return render(request, 'modification.html', {'form': form})
 
 def subscription_packs_view(request):
     packs = SubscriptionPack.objects.all()
@@ -55,6 +80,10 @@ def subscription_packs_view(request):
 
 def index(request):
     return render(request, 'index.html')
+
+
+def Reaction(request):
+    return render(request, 'Reaction.html')
 
 
 def profil_view(request):

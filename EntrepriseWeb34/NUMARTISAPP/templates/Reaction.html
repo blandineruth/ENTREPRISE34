@@ -1,0 +1,35 @@
+
+{% extends "base1.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load static %}
+
+ <!-- Main Content -->
+<main class="flex-grow py-8">
+    <div class="container mx-auto bg-white p-6 rounded-lg shadow-lg text-center">
+        <h1 class="text-center text-2xl font-bold text-green-custom mb-6">NUMARTIS-CI Vous Remercie</h1>
+        <div class="flex justify-center mb-6">
+            <!-- Centrer l'image GIF -->
+            <img src="{% static 'img/thanks_12744466.gif' %}" alt="Merci" class="img-fluid rounded mx-auto" style="width: 300px;">
+        </div>
+        <p class="text-center text-xl font-medium mb-4">Merci d'avoir renseigné vos informations.</p>
+        <p class="text-center">
+            Continuer la visite du site en cliquant <a href="{% url 'index' %}" class="btn btn-primary">ICI</a>
+        </p>
+    </div>
+</main>
+<!-- Main Content End -->
+
+
+
+
+
+{% endblock %}
+
+
+
+
+  

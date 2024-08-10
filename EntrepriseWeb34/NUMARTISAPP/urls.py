@@ -22,6 +22,10 @@ urlpatterns = [
     path('newsletter-signup/', newsletter_signup, name='newsletter_signup'),
     path('profil/', views.profil_view, name='profil'),
     path('subscription_packs/', views.subscription_packs_view, name='subscription_packs'),
+    path('deconnexion/', views.deconnexion, name='deconnexion'),
+    path('profil_client/',views.profil_client,name='profil_client'),
+    path('modification/',views.modification,name='modification'),
+    path('Reaction/',views.Reaction,name='Reaction'),
     
 ]
 if settings.DEBUG:
