@@ -76,18 +76,27 @@ class ContactForm(forms.ModelForm):
         model = ContactUser
         fields = ['name', 'email', 'phone_number', 'typeservice', 'message']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 
-                                           'placeholder': 'Votre Nom'}),
+            'name': forms.TextInput(attrs={'class': 'form-control',
+                                        'placeholder': 'Votre nom',
+                                        'style': 'height: 55px;'}),
+            
             'email': forms.EmailInput(attrs={'class': 'form-control',
-                                             'placeholder': 'Votre Email'}),
+                                            'placeholder': 'Votre Email', 
+                                            'style': 'height: 55px;' }),
+            
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 
-                                                   'placeholder': 'Numéro'}),
+                                            'placeholder': 'Votre Numero', 
+                                            'style': 'height: 55px;'}),
+            
             'typeservice': forms.TextInput(attrs={'class': 'form-control', 
-                                                  'placeholder': 'Service'}),
+                                            'placeholder': 'Type de service', 
+                                            'style': 'height: 55px;'}),
+            
             'message': forms.Textarea(attrs={'class': 'form-control', 
-                                             'placeholder': 'Message'}),
+                                              'placeholder': 'Votre Message', 
+                                            'style': 'height: 55px;'}),
         }
-        
+  
               
 class AuthUser(UserCreationForm):
     first_name = forms.EmailField(

@@ -31,41 +31,35 @@
                                 {% csrf_token %}
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <div class="form-floating">
+                                        <div class="mb-3">
                                             {{ form.name }}
-                                            <label for="id_name" style="color: black;"></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-floating">
+                                        <div class="mb-3">
                                             {{ form.email }}
-                                            <label for="id_email" style="color: black;">Votre Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-floating">
+                                        <div class="mb-3">
                                             {{ form.phone_number }}
-                                            <label for="id_phone_number" style="color: black;">Numéro</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-floating">
+                                        <div class="mb-3">
                                             {{ form.typeservice }}
-                                            <label for="id_typeservice" style="color: black;">Service</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-floating">
+                                        <div class="mb-3">
                                             {{ form.message }}
-                                            <label for="id_message" style="color: black;">Message</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Message Envoyer</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Envoyer Message</button>
                                     </div>
                                 </div>
-                            </form>
-                                                       
+                            </form>                                                     
                     </div>
                 </div>
               >

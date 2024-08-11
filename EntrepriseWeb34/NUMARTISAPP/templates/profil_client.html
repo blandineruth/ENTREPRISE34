@@ -99,10 +99,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{% url 'index' %}" class="nav-item nav-link active">Accueil</a>
-            <a href="" class="nav-item nav-link">A Propos de Nous</a>
-            <a href="" class="nav-item nav-link">Services</a>
-            <a href="" class="nav-item nav-link">Contacts</a>
+            <a href="#Accueil" class="nav-item nav-link active">Accueil</a>
+            <a href="#Apropos" class="nav-item nav-link">A Propos de Nous</a>
+            <a href="#Services" class="nav-item nav-link">Services</a>
+            <a href="{% url 'ContactUser' %}" class="nav-item nav-link">Contacts</a>
+            <a href="{% url 'profil_client' %}" class="nav-item nav-link">Profil</a>
         </div>
                 <a href="{% url 'EntrepriseArtisan' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block" 
                 style="background-color: #1B75BC; color: #ffffff;">Je suis un Artisan<i class="fa fa-arrow-right ms-3"></i></a>
