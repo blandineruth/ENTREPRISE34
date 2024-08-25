@@ -112,7 +112,10 @@
             <a href="{% url 'index' %}" class="nav-item nav-link active">Accueil</a>
             <a href="{% url 'Apropos' %}" class="nav-item nav-link">A Propos de Nous</a>
             <a href="{% url 'services' %}" class="nav-item nav-link">Services</a>
+            <a href="{% url 'subscription_packs' %}" class="nav-item nav-link">Abonnement</a>
             <a href="{% url 'ContactUser' %}" class="nav-item nav-link">Contacts</a>
+            <a href="{% url 'profil_client' %}" class="nav-item nav-link">Profil</a>
+            
         </div>
                 <a href="{% url 'EntrepriseArtisan' %}" class="btn btn-primary py-4 px-lg-5" 
                 style="background-color: #1B75BC; color: #ffffff;">Je suis un Artisan<i class="fa fa-arrow-right ms-3"></i></a>
@@ -157,11 +160,11 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">En savoir plus</h4>
-                    <a class="btn btn-link" href="#Apropos">A Propos de nous</a>
+                    <a class="btn btn-link" href="{% url 'Apropos' %}">A Propos de nous</a>
                     <a class="btn btn-link" href="{% url 'ContactUser' %}">Contact</a>
                     <a class="btn btn-link" href="{% url 'services' %}">Services</a>
-                    <a class="btn btn-link" href="">connexion</a>
-                    <a class="btn btn-link" href="">inscription</a>
+                    <a class="btn btn-link" href="{% url 'connexion' %}">connexion</a>
+                    <a class="btn btn-link" href="{% url 'inscription' %}">inscription</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Newsletter</h4>

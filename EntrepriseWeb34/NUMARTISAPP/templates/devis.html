@@ -83,7 +83,7 @@
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a> -->
-                    <a href="" class="btn btn-primary py-4 px-lg-5">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="{% url 'connexion' %}" class="btn btn-primary py-4 px-lg-5">CONNEXION<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>
@@ -192,7 +192,8 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" style="color: black;">
-                                    Merci de vous être inscrit. Voulez-vous suivre ?
+                                    Merci d’avoir repondu au formulaire! Souhaitez vous suivre la demande de votre service ? 
+                                
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" id="continueButton">Oui</button>

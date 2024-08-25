@@ -1,5 +1,7 @@
 {% extends "base1.html" %}
 
+{% load static %}
+
 {% block content %}
     <section class="bg-white py-5">
         <div class="container">
@@ -9,6 +11,9 @@
             <div class="row g-4">
                 {% for pack in packs %}
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    {% if pack.photo_pack %}
+                        <img  class="img-fluid" style="width: 50%; height: auto;" src="{{ pack.photo_pack.url }}" alt="{{ pack.name }}">
+                    {% endif %}
                     <div class="subscription-pack p-4 text-center border border-5 border-light border-top-0">
                         <h4 class="mb-3">{{ pack.name }}</h4>
                         <p>{{ pack.description }}</p>
@@ -17,11 +22,12 @@
                         {% else %}
                             <h5 class="mb-3">Prix: Gratuit</h5>
                         {% endif %}
-                        <a href="#" class="btn btn-primary py-2 px-5" style="border-radius:50px;">S'abonner</a>
+                        <a href="{% url 'Reaction' %}"  class="btn btn-primary py-2 px-5" style="border-radius:50px;">S'abonner</a>
                     </div>
                 </div>
                 {% endfor %}
             </div>
+            
         </div>
     </section>
 {% endblock %}

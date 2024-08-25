@@ -18,7 +18,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import AuthUser
 
 
-
 def inscription(request):
     try:
         if request.method == 'POST':
@@ -60,6 +59,7 @@ def deconnexion(request):
 
 def profil_client(request):
     return render(request, 'profil_client.html')
+
 def modification(request):
     user = request.user  
     if request.method == 'POST':

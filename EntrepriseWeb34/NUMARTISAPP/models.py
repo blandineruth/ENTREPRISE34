@@ -73,6 +73,13 @@ class Servicetype(models.Model):
         return self.name
 
 
+
+
+
+
+
+
+
 class Project(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -346,7 +353,9 @@ class SubscriptionPack(models.Model):
     ]
     name = models.CharField(max_length=100, choices=PACK_CHOICES)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Prix peut être null pour les packs gratuits
+    price = models.FloatField(null=True, blank=True)
+    photo_pack = models.ImageField(upload_to='photos/', blank=True, null=True)
+    # Prix peut être null pour les packs gratuits
 
     def __str__(self):
         return self.name
